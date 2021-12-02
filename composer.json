@@ -4,7 +4,7 @@
 	"keywords": ["tracy", "bluescreen", "error", "debug", "debugger", "exceptions", "bundle"],
 	"license": "MIT",
 	"require": {
-		"php": "^7.3 || ^8.0",
+		"php": "^7.4 || ^8.0",
 		"symfony/config": "^5.0",
 		"symfony/console": "^5.0",
 		"symfony/dependency-injection": "^5.0",
@@ -15,7 +15,7 @@
 	"require-dev": {
 		"cdn77/coding-standard": "^5.0",
 		"matthiasnoback/symfony-dependency-injection-test": "^4.2",
-		"mikey179/vfsstream": "^1.6",
+		"mikey179/vfsstream": "^1.6.8",
 		"phpstan/extension-installer": "^1.0",
 		"phpstan/phpstan": "0.12.99",
 		"phpstan/phpstan-phpunit": "0.12.22",
@@ -35,9 +35,6 @@
 		}
 	},
 	"config": {
-		"sort-packages": true,
-		"platform": {
-			"php": "7.3.0"
-		}
+		"sort-packages": true
 	}
 }
