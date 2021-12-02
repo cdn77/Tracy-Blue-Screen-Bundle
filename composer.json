@@ -17,9 +17,9 @@
 		"matthiasnoback/symfony-dependency-injection-test": "^4.2",
 		"mikey179/vfsstream": "^1.6.8",
 		"phpstan/extension-installer": "^1.0",
-		"phpstan/phpstan": "0.12.99",
-		"phpstan/phpstan-phpunit": "0.12.22",
-		"phpstan/phpstan-strict-rules": "^0.12.7",
+		"phpstan/phpstan": "^1.0",
+		"phpstan/phpstan-phpunit": "^1.0",
+		"phpstan/phpstan-strict-rules": "^1.0",
 		"phpunit/phpunit": "^9.5",
 		"psalm/plugin-phpunit": "0.16.1",
 		"vimeo/psalm": "^4.13.1"
