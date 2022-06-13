@@ -35,8 +35,8 @@ final class ConsoleBlueScreenErrorListener
     public function __construct(
         TracyLogger $tracyLogger,
         BlueScreen $blueScreen,
-        ?string $logDirectory,
-        ?string $browser
+        string|null $logDirectory,
+        string|null $browser,
     ) {
         $this->tracyLogger = $tracyLogger;
         $this->blueScreen = $blueScreen;
@@ -44,7 +44,7 @@ final class ConsoleBlueScreenErrorListener
         $this->browser = $browser;
     }
 
-    public function onConsoleError(ConsoleErrorEvent $event) : void
+    public function onConsoleError(ConsoleErrorEvent $event): void
     {
         if ($this->tracyLogger->directory === null) {
             $this->tracyLogger->directory = $this->logDirectory;
@@ -75,7 +75,7 @@ final class ConsoleBlueScreenErrorListener
         $this->openBrowser($this->browser, $exceptionFile);
     }
 
-    private function printErrorMessage(OutputInterface $output, string $message) : void
+    private function printErrorMessage(OutputInterface $output, string $message): void
     {
         $message = sprintf('<error>%s</error>', $message);
         if ($output instanceof ConsoleOutputInterface) {
@@ -85,7 +85,7 @@ final class ConsoleBlueScreenErrorListener
         }
     }
 
-    private function openBrowser(string $browser, string $file) : void
+    private function openBrowser(string $browser, string $file): void
     {
         static $showed = false;
         if ($showed) {

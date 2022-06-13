@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 
 final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTestCase
 {
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -22,7 +22,7 @@ final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTest
         $this->setParameter('kernel.debug', true);
     }
 
-    public function testEnabledByDefault() : void
+    public function testEnabledByDefault(): void
     {
         $this->loadExtensions();
 
@@ -40,7 +40,7 @@ final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTest
         );
     }
 
-    public function testDisabled() : void
+    public function testDisabled(): void
     {
         $this->loadExtensions(
             [
@@ -55,7 +55,7 @@ final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTest
         );
     }
 
-    public function testEnabled() : void
+    public function testEnabled(): void
     {
         $this->loadExtensions(
             [
@@ -79,7 +79,7 @@ final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTest
         );
     }
 
-    public function testConfigureListenerPriority() : void
+    public function testConfigureListenerPriority(): void
     {
         $this->loadExtensions(
             [
@@ -96,13 +96,13 @@ final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTest
     }
 
     /** @return ExtensionInterface[] */
-    protected function getContainerExtensions() : array
+    protected function getContainerExtensions(): array
     {
         return [new TracyBlueScreenExtension()];
     }
 
     /** @param mixed[] $configuration format: extensionAlias(string) => configuration(mixed[]) */
-    private function loadExtensions(array $configuration = []) : void
+    private function loadExtensions(array $configuration = []): void
     {
         TracyBlueScreenExtensionTest::loadExtensionsToContainer(
             $this->container,

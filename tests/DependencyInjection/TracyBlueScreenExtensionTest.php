@@ -26,8 +26,8 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
     public static function loadExtensionsToContainer(
         ContainerBuilder $container,
         array $configuration = [],
-        array $minimalConfiguration = []
-    ) : void {
+        array $minimalConfiguration = [],
+    ): void {
         $configurations = [];
         foreach ($container->getExtensions() as $extensionAlias => $extension) {
             $configurations[$extensionAlias] = [];
@@ -57,7 +57,7 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
         }
     }
 
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -68,7 +68,7 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
         $this->setParameter('kernel.debug', true);
     }
 
-    public function testOnlyAddCollapsePaths() : void
+    public function testOnlyAddCollapsePaths(): void
     {
         $this->loadExtensions();
 
@@ -87,7 +87,7 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
         $this->assertArrayContainsStringPart('/vendor', $collapsePaths);
     }
 
-    public function testCollapseCacheDirsByDefault() : void
+    public function testCollapseCacheDirsByDefault(): void
     {
         $this->loadExtensions();
 
@@ -99,7 +99,7 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
         $this->assertArrayContainsStringPart('/tests-cache-dir', $collapsePaths);
     }
 
-    public function testSetCollapseDirs() : void
+    public function testSetCollapseDirs(): void
     {
         $paths = [
             __DIR__ . '/foobar',
@@ -119,7 +119,7 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
         self::assertEquals($paths, $collapsePaths);
     }
 
-    public function testEmptyCollapseDirs() : void
+    public function testEmptyCollapseDirs(): void
     {
         $this->loadExtensions(
             [
@@ -138,19 +138,19 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
     }
 
     /** @return ExtensionInterface[] */
-    protected function getContainerExtensions() : array
+    protected function getContainerExtensions(): array
     {
         return [new TracyBlueScreenExtension()];
     }
 
     /** @param mixed[] $configuration format: extensionAlias(string) => configuration(mixed[]) */
-    private function loadExtensions(array $configuration = []) : void
+    private function loadExtensions(array $configuration = []): void
     {
         self::loadExtensionsToContainer($this->container, $configuration, $this->getMinimalConfiguration());
     }
 
     /** @param string[] $array */
-    private function assertArrayContainsStringPart(string $string, array $array) : void
+    private function assertArrayContainsStringPart(string $string, array $array): void
     {
         $found = false;
         foreach ($array as $item) {

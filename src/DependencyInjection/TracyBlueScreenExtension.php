@@ -23,7 +23,7 @@ final class TracyBlueScreenExtension extends ConfigurableExtension
     public const CONTAINER_PARAMETER_CONTROLLER_LISTENER_PRIORITY = 'cdn77.tracy_blue_screen.controller.listener_priority';
 
     /** @param mixed[] $mergedConfig */
-    public function loadInternal(array $mergedConfig, ContainerBuilder $container) : void
+    public function loadInternal(array $mergedConfig, ContainerBuilder $container): void
     {
         $container->setParameter(
             self::CONTAINER_PARAMETER_BLUE_SCREEN_COLLAPSE_PATHS,
@@ -78,7 +78,7 @@ final class TracyBlueScreenExtension extends ConfigurableExtension
     }
 
     /** @param mixed[] $config */
-    public function getConfiguration(array $config, ContainerBuilder $container) : Configuration
+    public function getConfiguration(array $config, ContainerBuilder $container): Configuration
     {
         $kernelProjectDir = $container->getParameter('kernel.project_dir');
         $kernelLogsDir = $container->getParameter('kernel.logs_dir');
@@ -95,7 +95,7 @@ final class TracyBlueScreenExtension extends ConfigurableExtension
         );
     }
 
-    private function isEnabled(?bool $configOption, string $environment, bool $debug) : bool
+    private function isEnabled(bool|null $configOption, string $environment, bool $debug): bool
     {
         if ($configOption === null) {
             return $environment === 'dev' && $debug === true;
