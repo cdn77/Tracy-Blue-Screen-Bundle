@@ -19,7 +19,7 @@ use Tracy\Logger as TracyLogger;
 
 final class ConsoleBlueScreenExceptionListenerTest extends TestCase
 {
-    public function testLogTracy() : void
+    public function testLogTracy(): void
     {
         vfsStream::setup('tracy');
         $directory = vfsStream::url('tracy');
@@ -58,7 +58,7 @@ final class ConsoleBlueScreenExceptionListenerTest extends TestCase
         $listener->onConsoleError($event);
     }
 
-    public function testUsesErrorOutputIfPossible() : void
+    public function testUsesErrorOutputIfPossible(): void
     {
         vfsStream::setup('tracy');
         $directory = vfsStream::url('tracy');
@@ -103,7 +103,7 @@ final class ConsoleBlueScreenExceptionListenerTest extends TestCase
         $listener->onConsoleError($event);
     }
 
-    public function testMissingLogDir() : void
+    public function testMissingLogDir(): void
     {
         $command = $this->createMock(Command::class);
         $input = $this->createMock(InputInterface::class);

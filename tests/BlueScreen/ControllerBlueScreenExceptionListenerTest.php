@@ -14,7 +14,7 @@ use Tracy\BlueScreen;
 
 final class ControllerBlueScreenExceptionListenerTest extends TestCase
 {
-    public function testRenderTracy() : void
+    public function testRenderTracy(): void
     {
         $kernel = $this->createMock(HttpKernelInterface::class);
         $request = new Request();

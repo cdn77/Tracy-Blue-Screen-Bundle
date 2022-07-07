@@ -46,7 +46,7 @@ final class Configuration implements ConfigurationInterface
         $this->kernelCacheDir = $kernelCacheDir;
     }
 
-    public function getConfigTreeBuilder() : TreeBuilder
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder($this->alias);
         $rootNode = $treeBuilder->getRootNode();

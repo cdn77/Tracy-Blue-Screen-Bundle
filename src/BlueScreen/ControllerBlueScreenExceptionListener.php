@@ -23,14 +23,14 @@ final class ControllerBlueScreenExceptionListener
         $this->blueScreen = $blueScreen;
     }
 
-    public function onKernelException(ExceptionEvent $event) : void
+    public function onKernelException(ExceptionEvent $event): void
     {
         $blueScreenResponse = $this->renderBlueScreen($event->getThrowable());
 
         $event->setResponse($blueScreenResponse);
     }
 
-    private function renderBlueScreen(Throwable $exception) : Response
+    private function renderBlueScreen(Throwable $exception): Response
     {
         ob_start();
 

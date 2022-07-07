@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 
 final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCase
 {
-    public function setUp() : void
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -22,7 +22,7 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
         $this->setParameter('kernel.debug', true);
     }
 
-    public function testEnabledByDefault() : void
+    public function testEnabledByDefault(): void
     {
         $this->loadExtensions();
 
@@ -40,7 +40,7 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
         );
     }
 
-    public function testDisabled() : void
+    public function testDisabled(): void
     {
         $this->loadExtensions(
             [
@@ -55,7 +55,7 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
         );
     }
 
-    public function testEnabled() : void
+    public function testEnabled(): void
     {
         $this->loadExtensions(
             [
@@ -79,7 +79,7 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
         );
     }
 
-    public function testDefaultLogsDirIsKernelLogsDir() : void
+    public function testDefaultLogsDirIsKernelLogsDir(): void
     {
         $this->loadExtensions();
 
@@ -89,7 +89,7 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
         );
     }
 
-    public function testCustomLogsDir() : void
+    public function testCustomLogsDir(): void
     {
         $this->loadExtensions(
             [
@@ -107,7 +107,7 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
         );
     }
 
-    public function testDefaultBrowserIsNull() : void
+    public function testDefaultBrowserIsNull(): void
     {
         $this->loadExtensions();
 
@@ -117,7 +117,7 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
         );
     }
 
-    public function testCustomBrowser() : void
+    public function testCustomBrowser(): void
     {
         $this->loadExtensions(
             [
@@ -133,7 +133,7 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
         );
     }
 
-    public function testConfigureListenerPriority() : void
+    public function testConfigureListenerPriority(): void
     {
         $this->loadExtensions(
             [
@@ -150,13 +150,13 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
     }
 
     /** @return ExtensionInterface[] */
-    protected function getContainerExtensions() : array
+    protected function getContainerExtensions(): array
     {
         return [new TracyBlueScreenExtension()];
     }
 
     /** @param mixed[] $configuration format: extensionAlias(string) => configuration(mixed[]) */
-    private function loadExtensions(array $configuration = []) : void
+    private function loadExtensions(array $configuration = []): void
     {
         TracyBlueScreenExtensionTest::loadExtensionsToContainer(
             $this->container,
