@@ -35,6 +35,10 @@
 		}
 	},
 	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"phpstan/extension-installer": true
+		},
 		"sort-packages": true
 	}
 }
