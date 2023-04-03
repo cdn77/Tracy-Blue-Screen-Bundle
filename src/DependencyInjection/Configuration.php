@@ -14,17 +14,17 @@ use function sprintf;
 
 final class Configuration implements ConfigurationInterface
 {
-    public const PARAMETER_COLLAPSE_PATHS = 'collapse_paths';
-    public const PARAMETER_CONSOLE_BROWSER = 'browser';
-    public const PARAMETER_CONSOLE_ENABLED = 'enabled';
-    public const PARAMETER_CONSOLE_LISTENER_PRIORITY = 'listener_priority';
-    public const PARAMETER_CONSOLE_LOG_DIRECTORY = 'log_directory';
-    public const PARAMETER_CONTROLLER_ENABLED = 'enabled';
-    public const PARAMETER_CONTROLLER_LISTENER_PRIORITY = 'listener_priority';
+    public const ParameterCollapsePaths = 'collapse_paths';
+    public const ParameterConsoleBrowser = 'browser';
+    public const ParameterConsoleEnabled = 'enabled';
+    public const ParameterConsoleListenerPriority = 'listener_priority';
+    public const ParameterConsoleLogDirectory = 'log_directory';
+    public const ParameterControllerEnabled = 'enabled';
+    public const ParameterControllerListenerPriority = 'listener_priority';
 
-    public const SECTION_BLUE_SCREEN = 'blue_screen';
-    public const SECTION_CONSOLE = 'console';
-    public const SECTION_CONTROLLER = 'controller';
+    public const SectionBlueScreen = 'blue_screen';
+    public const SectionConsole = 'console';
+    public const SectionController = 'controller';
 
     /** @var string */
     private $alias;
@@ -54,55 +54,55 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->arrayNode(self::SECTION_CONTROLLER)
+                ->arrayNode(self::SectionController)
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode(self::PARAMETER_CONTROLLER_ENABLED)
+                        ->scalarNode(self::ParameterControllerEnabled)
                             ->info('Enable debug screen for controllers.')
                             ->defaultNull()
                             ->end()
-                        ->integerNode(self::PARAMETER_CONTROLLER_LISTENER_PRIORITY)
+                        ->integerNode(self::ParameterControllerListenerPriority)
                             ->info('Priority with which the listener will be registered.')
                             ->defaultValue(0)
                             ->end()
                         ->end()
                     ->end()
-                ->arrayNode(self::SECTION_CONSOLE)
+                ->arrayNode(self::SectionConsole)
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode(self::PARAMETER_CONSOLE_ENABLED)
+                        ->scalarNode(self::ParameterConsoleEnabled)
                             ->info('Enable debug screen for console.')
                             ->defaultNull()
                             ->end()
-                        ->scalarNode(self::PARAMETER_CONSOLE_LOG_DIRECTORY)
+                        ->scalarNode(self::ParameterConsoleLogDirectory)
                             ->info(
                                 'Directory, where BlueScreens for console will be stored.'
                                 . ' If you are already using Tracy for logging, set this to the same.'
                                 . sprintf(
                                     ' This will be only used, if given %s instance does not have a directory set.',
-                                    TracyLogger::class
-                                )
+                                    TracyLogger::class,
+                                ),
                             )
                             ->defaultValue($this->kernelLogsDir)
                             ->end()
-                        ->scalarNode(self::PARAMETER_CONSOLE_BROWSER)
+                        ->scalarNode(self::ParameterConsoleBrowser)
                             ->info(
                                 'Configure this to open generated BlueScreen in your browser.'
                                 . ' Configuration option may be for example \'google-chrome\' or \'firefox\''
-                                . ' and it will be invoked as a shell command.'
+                                . ' and it will be invoked as a shell command.',
                             )
                             ->defaultNull()
                             ->end()
-                        ->integerNode(self::PARAMETER_CONSOLE_LISTENER_PRIORITY)
+                        ->integerNode(self::ParameterConsoleListenerPriority)
                             ->info('Priority with which the listener will be registered.')
                             ->defaultValue(0)
                             ->end()
                         ->end()
                     ->end()
-                ->arrayNode(self::SECTION_BLUE_SCREEN)
+                ->arrayNode(self::SectionBlueScreen)
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->arrayNode(self::PARAMETER_COLLAPSE_PATHS)
+                        ->arrayNode(self::ParameterCollapsePaths)
                             //phpcs:ignore SlevomatCodingStandard.Files.LineLength.LineTooLong
                             ->info('Add paths which should be collapsed (for external/compiled code) so that actual error is expanded.')
                             ->prototype('scalar')

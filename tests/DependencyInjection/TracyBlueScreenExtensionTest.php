@@ -80,7 +80,7 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
 
         $this->assertContainerBuilderHasService(
             'cdn77.tracy_blue_screen.tracy.blue_screen.default',
-            BlueScreen::class
+            BlueScreen::class,
         );
 
         $blueScreen = $this->container->get('cdn77.tracy_blue_screen.tracy.blue_screen.default');
@@ -116,7 +116,7 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
                 'tracy_blue_screen' => [
                     'blue_screen' => ['collapse_paths' => $paths],
                 ],
-            ]
+            ],
         );
 
         $this->assertContainerBuilderHasParameter('cdn77.tracy_blue_screen.blue_screen.collapse_paths');
@@ -134,7 +134,7 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
                         'collapse_paths' => [],
                     ],
                 ],
-            ]
+            ],
         );
 
         $this->assertContainerBuilderHasParameter('cdn77.tracy_blue_screen.blue_screen.collapse_paths');
@@ -169,7 +169,7 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
 
         self::assertTrue(
             $found,
-            sprintf('%s not found in any elements of the given %s', $string, var_export($array, true))
+            sprintf('%s not found in any elements of the given %s', $string, var_export($array, true)),
         );
     }
 }
