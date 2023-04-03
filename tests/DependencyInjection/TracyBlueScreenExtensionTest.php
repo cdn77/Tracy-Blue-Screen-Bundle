@@ -32,7 +32,9 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
         foreach ($container->getExtensions() as $extensionAlias => $extension) {
             $configurations[$extensionAlias] = [];
             if (array_key_exists($extensionAlias, $minimalConfiguration)) {
-                $container->loadFromExtension($extensionAlias, $minimalConfiguration[$extensionAlias]);
+                /** @var array<string, mixed>|null $values */
+                $values = $minimalConfiguration[$extensionAlias];
+                $container->loadFromExtension($extensionAlias, $values);
                 $configurations[$extensionAlias][] = $minimalConfiguration[$extensionAlias];
             }
 
@@ -40,7 +42,9 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
                 continue;
             }
 
-            $container->loadFromExtension($extensionAlias, $configuration[$extensionAlias]);
+            /** @var array<string, mixed>|null $values */
+            $values = $configuration[$extensionAlias];
+            $container->loadFromExtension($extensionAlias, $values);
             $configurations[$extensionAlias][] = $configuration[$extensionAlias];
         }
 
@@ -53,7 +57,9 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
         }
 
         foreach ($container->getExtensions() as $extensionAlias => $extension) {
-            $extension->load($configurations[$extensionAlias], $container);
+            /** @var array<array<mixed>> $values */
+            $values = $configurations[$extensionAlias];
+            $extension->load($values, $container);
         }
     }
 
