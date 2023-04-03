@@ -53,7 +53,7 @@ final class ConsoleBlueScreenExceptionListenerTest extends TestCase
             $logger,
             $blueScreen,
             $directory,
-            null
+            null,
         );
         $listener->onConsoleError($event);
     }
@@ -98,7 +98,7 @@ final class ConsoleBlueScreenExceptionListenerTest extends TestCase
             $logger,
             $blueScreen,
             $directory,
-            null
+            null,
         );
         $listener->onConsoleError($event);
     }
@@ -119,7 +119,7 @@ final class ConsoleBlueScreenExceptionListenerTest extends TestCase
             $logger,
             $blueScreen,
             null,
-            null
+            null,
         );
 
         $this->expectException(InvalidArgumentException::class);

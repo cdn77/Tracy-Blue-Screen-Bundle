@@ -28,15 +28,15 @@ final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTest
 
         $this->assertContainerBuilderHasService(
             'cdn77.tracy_blue_screen.blue_screen.controller_blue_screen_exception_listener',
-            ControllerBlueScreenExceptionListener::class
+            ControllerBlueScreenExceptionListener::class,
         );
         $this->assertContainerBuilderHasServiceDefinitionWithTag(
             'cdn77.tracy_blue_screen.blue_screen.controller_blue_screen_exception_listener',
             'kernel.event_listener',
             [
                 'event' => 'kernel.exception',
-                'priority' => '%' . TracyBlueScreenExtension::CONTAINER_PARAMETER_CONTROLLER_LISTENER_PRIORITY . '%',
-            ]
+                'priority' => '%' . TracyBlueScreenExtension::ContainerParameterControllerListenerPriority . '%',
+            ],
         );
     }
 
@@ -47,11 +47,11 @@ final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTest
                 'tracy_blue_screen' => [
                     'controller' => ['enabled' => false],
                 ],
-            ]
+            ],
         );
 
         $this->assertContainerBuilderNotHasService(
-            'cdn77.tracy_blue_screen.blue_screen.controller_blue_screen_exception_listener'
+            'cdn77.tracy_blue_screen.blue_screen.controller_blue_screen_exception_listener',
         );
     }
 
@@ -62,20 +62,20 @@ final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTest
                 'tracy_blue_screen' => [
                     'controller' => ['enabled' => true],
                 ],
-            ]
+            ],
         );
 
         $this->assertContainerBuilderHasService(
             'cdn77.tracy_blue_screen.blue_screen.controller_blue_screen_exception_listener',
-            ControllerBlueScreenExceptionListener::class
+            ControllerBlueScreenExceptionListener::class,
         );
         $this->assertContainerBuilderHasServiceDefinitionWithTag(
             'cdn77.tracy_blue_screen.blue_screen.controller_blue_screen_exception_listener',
             'kernel.event_listener',
             [
                 'event' => 'kernel.exception',
-                'priority' => '%' . TracyBlueScreenExtension::CONTAINER_PARAMETER_CONTROLLER_LISTENER_PRIORITY . '%',
-            ]
+                'priority' => '%' . TracyBlueScreenExtension::ContainerParameterControllerListenerPriority . '%',
+            ],
         );
     }
 
@@ -86,12 +86,12 @@ final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTest
                 'tracy_blue_screen' => [
                     'controller' => ['listener_priority' => 123],
                 ],
-            ]
+            ],
         );
 
         $this->assertContainerBuilderHasParameter(
-            TracyBlueScreenExtension::CONTAINER_PARAMETER_CONTROLLER_LISTENER_PRIORITY,
-            123
+            TracyBlueScreenExtension::ContainerParameterControllerListenerPriority,
+            123,
         );
     }
 
@@ -107,7 +107,7 @@ final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTest
         TracyBlueScreenExtensionTest::loadExtensionsToContainer(
             $this->container,
             $configuration,
-            $this->getMinimalConfiguration()
+            $this->getMinimalConfiguration(),
         );
     }
 }

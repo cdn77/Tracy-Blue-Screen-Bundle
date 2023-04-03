@@ -28,15 +28,15 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
 
         $this->assertContainerBuilderHasService(
             'cdn77.tracy_blue_screen.blue_screen.console_blue_screen_error_listener',
-            ConsoleBlueScreenErrorListener::class
+            ConsoleBlueScreenErrorListener::class,
         );
         $this->assertContainerBuilderHasServiceDefinitionWithTag(
             'cdn77.tracy_blue_screen.blue_screen.console_blue_screen_error_listener',
             'kernel.event_listener',
             [
                 'event' => 'console.error',
-                'priority' => '%' . TracyBlueScreenExtension::CONTAINER_PARAMETER_CONSOLE_LISTENER_PRIORITY . '%',
-            ]
+                'priority' => '%' . TracyBlueScreenExtension::ContainerParameterConsoleListenerPriority . '%',
+            ],
         );
     }
 
@@ -47,11 +47,11 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
                 'tracy_blue_screen' => [
                     'console' => ['enabled' => false],
                 ],
-            ]
+            ],
         );
 
         $this->assertContainerBuilderNotHasService(
-            'cdn77.tracy_blue_screen.blue_screen.console_blue_screen_error_listener'
+            'cdn77.tracy_blue_screen.blue_screen.console_blue_screen_error_listener',
         );
     }
 
@@ -62,20 +62,20 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
                 'tracy_blue_screen' => [
                     'console' => ['enabled' => true],
                 ],
-            ]
+            ],
         );
 
         $this->assertContainerBuilderHasService(
             'cdn77.tracy_blue_screen.blue_screen.console_blue_screen_error_listener',
-            ConsoleBlueScreenErrorListener::class
+            ConsoleBlueScreenErrorListener::class,
         );
         $this->assertContainerBuilderHasServiceDefinitionWithTag(
             'cdn77.tracy_blue_screen.blue_screen.console_blue_screen_error_listener',
             'kernel.event_listener',
             [
                 'event' => 'console.error',
-                'priority' => '%' . TracyBlueScreenExtension::CONTAINER_PARAMETER_CONSOLE_LISTENER_PRIORITY . '%',
-            ]
+                'priority' => '%' . TracyBlueScreenExtension::ContainerParameterConsoleListenerPriority . '%',
+            ],
         );
     }
 
@@ -84,8 +84,8 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
         $this->loadExtensions();
 
         $this->assertContainerBuilderHasParameter(
-            TracyBlueScreenExtension::CONTAINER_PARAMETER_CONSOLE_LOG_DIRECTORY,
-            __DIR__ . '/tests-logs-dir'
+            TracyBlueScreenExtension::ContainerParameterConsoleLogDirectory,
+            __DIR__ . '/tests-logs-dir',
         );
     }
 
@@ -98,12 +98,12 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
                         'log_directory' => __DIR__ . '/foobar',
                     ],
                 ],
-            ]
+            ],
         );
 
         $this->assertContainerBuilderHasParameter(
-            TracyBlueScreenExtension::CONTAINER_PARAMETER_CONSOLE_LOG_DIRECTORY,
-            __DIR__ . '/foobar'
+            TracyBlueScreenExtension::ContainerParameterConsoleLogDirectory,
+            __DIR__ . '/foobar',
         );
     }
 
@@ -112,8 +112,8 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
         $this->loadExtensions();
 
         $this->assertContainerBuilderHasParameter(
-            TracyBlueScreenExtension::CONTAINER_PARAMETER_CONSOLE_BROWSER,
-            null
+            TracyBlueScreenExtension::ContainerParameterConsoleBrowser,
+            null,
         );
     }
 
@@ -124,12 +124,12 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
                 'tracy_blue_screen' => [
                     'console' => ['browser' => 'google-chrome'],
                 ],
-            ]
+            ],
         );
 
         $this->assertContainerBuilderHasParameter(
-            TracyBlueScreenExtension::CONTAINER_PARAMETER_CONSOLE_BROWSER,
-            'google-chrome'
+            TracyBlueScreenExtension::ContainerParameterConsoleBrowser,
+            'google-chrome',
         );
     }
 
@@ -140,12 +140,12 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
                 'tracy_blue_screen' => [
                     'console' => ['listener_priority' => 123],
                 ],
-            ]
+            ],
         );
 
         $this->assertContainerBuilderHasParameter(
-            TracyBlueScreenExtension::CONTAINER_PARAMETER_CONSOLE_LISTENER_PRIORITY,
-            123
+            TracyBlueScreenExtension::ContainerParameterConsoleListenerPriority,
+            123,
         );
     }
 
@@ -161,7 +161,7 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
         TracyBlueScreenExtensionTest::loadExtensionsToContainer(
             $this->container,
             $configuration,
-            $this->getMinimalConfiguration()
+            $this->getMinimalConfiguration(),
         );
     }
 }

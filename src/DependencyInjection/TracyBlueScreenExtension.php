@@ -16,34 +16,34 @@ use function is_string;
 //phpcs:disable SlevomatCodingStandard.Files.LineLength.LineTooLong
 final class TracyBlueScreenExtension extends ConfigurableExtension
 {
-    public const CONTAINER_PARAMETER_BLUE_SCREEN_COLLAPSE_PATHS = 'cdn77.tracy_blue_screen.blue_screen.collapse_paths';
-    public const CONTAINER_PARAMETER_CONSOLE_BROWSER = 'cdn77.tracy_blue_screen.console.browser';
-    public const CONTAINER_PARAMETER_CONSOLE_LISTENER_PRIORITY = 'cdn77.tracy_blue_screen.console.listener_priority';
-    public const CONTAINER_PARAMETER_CONSOLE_LOG_DIRECTORY = 'cdn77.tracy_blue_screen.console.log_directory';
-    public const CONTAINER_PARAMETER_CONTROLLER_LISTENER_PRIORITY = 'cdn77.tracy_blue_screen.controller.listener_priority';
+    public const ContainerParameterBlueScreenCollapsePaths = 'cdn77.tracy_blue_screen.blue_screen.collapse_paths';
+    public const ContainerParameterConsoleBrowser = 'cdn77.tracy_blue_screen.console.browser';
+    public const ContainerParameterConsoleListenerPriority = 'cdn77.tracy_blue_screen.console.listener_priority';
+    public const ContainerParameterConsoleLogDirectory = 'cdn77.tracy_blue_screen.console.log_directory';
+    public const ContainerParameterControllerListenerPriority = 'cdn77.tracy_blue_screen.controller.listener_priority';
 
     /** @param mixed[] $mergedConfig */
     public function loadInternal(array $mergedConfig, ContainerBuilder $container): void
     {
         $container->setParameter(
-            self::CONTAINER_PARAMETER_BLUE_SCREEN_COLLAPSE_PATHS,
-            $mergedConfig[Configuration::SECTION_BLUE_SCREEN][Configuration::PARAMETER_COLLAPSE_PATHS]
+            self::ContainerParameterBlueScreenCollapsePaths,
+            $mergedConfig[Configuration::SectionBlueScreen][Configuration::ParameterCollapsePaths],
         );
         $container->setParameter(
-            self::CONTAINER_PARAMETER_CONSOLE_BROWSER,
-            $mergedConfig[Configuration::SECTION_CONSOLE][Configuration::PARAMETER_CONSOLE_BROWSER]
+            self::ContainerParameterConsoleBrowser,
+            $mergedConfig[Configuration::SectionConsole][Configuration::ParameterConsoleBrowser],
         );
         $container->setParameter(
-            self::CONTAINER_PARAMETER_CONSOLE_LISTENER_PRIORITY,
-            $mergedConfig[Configuration::SECTION_CONSOLE][Configuration::PARAMETER_CONSOLE_LISTENER_PRIORITY]
+            self::ContainerParameterConsoleListenerPriority,
+            $mergedConfig[Configuration::SectionConsole][Configuration::ParameterConsoleListenerPriority],
         );
         $container->setParameter(
-            self::CONTAINER_PARAMETER_CONSOLE_LOG_DIRECTORY,
-            $mergedConfig[Configuration::SECTION_CONSOLE][Configuration::PARAMETER_CONSOLE_LOG_DIRECTORY]
+            self::ContainerParameterConsoleLogDirectory,
+            $mergedConfig[Configuration::SectionConsole][Configuration::ParameterConsoleLogDirectory],
         );
         $container->setParameter(
-            self::CONTAINER_PARAMETER_CONTROLLER_LISTENER_PRIORITY,
-            $mergedConfig[Configuration::SECTION_CONTROLLER][Configuration::PARAMETER_CONTROLLER_LISTENER_PRIORITY]
+            self::ContainerParameterControllerListenerPriority,
+            $mergedConfig[Configuration::SectionController][Configuration::ParameterControllerListenerPriority],
         );
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/config'));
@@ -56,9 +56,9 @@ final class TracyBlueScreenExtension extends ConfigurableExtension
 
         if (
             $this->isEnabled(
-                $mergedConfig[Configuration::SECTION_CONSOLE][Configuration::PARAMETER_CONSOLE_ENABLED],
+                $mergedConfig[Configuration::SectionConsole][Configuration::ParameterConsoleEnabled],
                 $environment,
-                $debug
+                $debug,
             )
         ) {
             $loader->load('console_listener.yml');
@@ -66,9 +66,9 @@ final class TracyBlueScreenExtension extends ConfigurableExtension
 
         if (
             ! $this->isEnabled(
-                $mergedConfig[Configuration::SECTION_CONTROLLER][Configuration::PARAMETER_CONTROLLER_ENABLED],
+                $mergedConfig[Configuration::SectionController][Configuration::ParameterControllerEnabled],
                 $environment,
-                $debug
+                $debug,
             )
         ) {
             return;
@@ -91,7 +91,7 @@ final class TracyBlueScreenExtension extends ConfigurableExtension
             $this->getAlias(),
             $kernelProjectDir,
             $kernelLogsDir,
-            $kernelCacheDir
+            $kernelCacheDir,
         );
     }
 

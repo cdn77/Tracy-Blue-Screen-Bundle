@@ -58,7 +58,7 @@ final class ConsoleBlueScreenErrorListener
             throw new InvalidArgumentException(sprintf(
                 'Log directory must be a writable directory, %s [%s] given',
                 (string) $this->tracyLogger->directory,
-                gettype($this->tracyLogger->directory)
+                gettype($this->tracyLogger->directory),
             ), 0, $event->getError());
         }
 
