@@ -46,6 +46,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@v2"
+        with:
+          coverage: "none"
+          php-version: "${{ matrix.php-version }}"
+          tools: "cs2pr"
+
       - name: "Install dependencies with Composer"
         uses: "ramsey/composer-install@v1"
 
