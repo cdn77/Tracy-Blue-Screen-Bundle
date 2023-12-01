@@ -18,7 +18,7 @@ final class ControllerBlueScreenExceptionListenerTest extends TestCase
     {
         $kernel = $this->createMock(HttpKernelInterface::class);
         $request = new Request();
-        $requestType = HttpKernelInterface::MASTER_REQUEST;
+        $requestType = HttpKernelInterface::MAIN_REQUEST;
         $exception = new Exception('Foobar!');
 
         $event = new ExceptionEvent($kernel, $request, $requestType, $exception);
