@@ -1,7 +1,6 @@
 # Tracy BlueScreen Bundle
 
 [![GitHub Actions][GA master image]][GA master]
-[![Type Coverage][Shepherd Image]][Shepherd Link]
 [![Code Coverage][Coverage image]][CodeCov Master]
 
 **This bundle lets you use the [Tracy's debug screen](https://github.com/nette/tracy#visualization-of-errors-and-exceptions) in combination with the the default profiler in your Symfony application.**
@@ -122,5 +121,4 @@ return [
 [CodeCov Master]: https://codecov.io/gh/cdn77/Tracy-Blue-Screen-Bundle/branch/master
 [GA master]: https://github.com/cdn77/Tracy-Blue-Screen-Bundle/actions?query=workflow%3A%22CI%22+branch%3Amaster
 [GA master image]: https://github.com/cdn77/Tracy-Blue-Screen-Bundle/workflows/CI/badge.svg
-[Shepherd Image]: https://shepherd.dev/github/cdn77/Tracy-Blue-Screen-Bundle/coverage.svg
 [Shepherd Link]: https://shepherd.dev/github/cdn77/Tracy-Blue-Screen-Bundle
