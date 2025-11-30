@@ -7,9 +7,7 @@
 
     <config name="php_version" value="80300" />
 
-    <rule ref="Cdn77">
-        <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint" />
-    </rule>
+    <rule ref="Cdn77" />
 
     <file>src/</file>
     <file>tests/</file>
