@@ -18,7 +18,7 @@ use function is_dir;
 use function is_writable;
 use function sprintf;
 
-final class ConsoleBlueScreenErrorListener
+final readonly class ConsoleBlueScreenErrorListener
 {
     public function __construct(
         private TracyLogger $tracyLogger,

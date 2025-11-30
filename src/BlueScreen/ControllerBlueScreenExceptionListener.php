@@ -13,7 +13,7 @@ use function assert;
 use function ob_get_clean;
 use function ob_start;
 
-final class ControllerBlueScreenExceptionListener
+final readonly class ControllerBlueScreenExceptionListener
 {
     public function __construct(private BlueScreen $blueScreen)
     {
