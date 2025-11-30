@@ -3,7 +3,7 @@
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          beStrictAboutChangesToGlobalState="true"
          beStrictAboutOutputDuringTests="true"
-         beStrictAboutTodoAnnotatedTests="true"
+         failOnPhpunitDeprecation="true"
          executionOrder="random"
          colors="true"
          bootstrap="tests/bootstrap.php"
