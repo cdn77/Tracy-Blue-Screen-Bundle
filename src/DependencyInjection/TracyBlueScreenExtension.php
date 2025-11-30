@@ -80,19 +80,7 @@ final class TracyBlueScreenExtension extends ConfigurableExtension
     /** @param mixed[] $config */
     public function getConfiguration(array $config, ContainerBuilder $container): Configuration
     {
-        $kernelProjectDir = $container->getParameter('kernel.project_dir');
-        $kernelLogsDir = $container->getParameter('kernel.logs_dir');
-        $kernelCacheDir = $container->getParameter('kernel.cache_dir');
-        assert(is_string($kernelProjectDir));
-        assert(is_string($kernelLogsDir));
-        assert(is_string($kernelCacheDir));
-
-        return new Configuration(
-            $this->getAlias(),
-            $kernelProjectDir,
-            $kernelLogsDir,
-            $kernelCacheDir,
-        );
+        return new Configuration($this->getAlias());
     }
 
     private function isEnabled(bool|null $configOption, string $environment, bool $debug): bool

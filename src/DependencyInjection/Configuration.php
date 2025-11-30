@@ -24,24 +24,8 @@ final class Configuration implements ConfigurationInterface
     public const SectionConsole = 'console';
     public const SectionController = 'controller';
 
-    /** @var string */
-    private $alias;
-
-    /** @var string */
-    private $kernelProjectDir;
-
-    /** @var string */
-    private $kernelLogsDir;
-
-    /** @var string */
-    private $kernelCacheDir;
-
-    public function __construct(string $alias, string $kernelProjectDir, string $kernelLogsDir, string $kernelCacheDir)
+    public function __construct(private readonly string $alias)
     {
-        $this->alias = $alias;
-        $this->kernelProjectDir = $kernelProjectDir;
-        $this->kernelLogsDir = $kernelLogsDir;
-        $this->kernelCacheDir = $kernelCacheDir;
     }
 
     /** @return TreeBuilder<'array'> */
@@ -81,7 +65,7 @@ final class Configuration implements ConfigurationInterface
                                     TracyLogger::class,
                                 ),
                             )
-                            ->defaultValue($this->kernelLogsDir)
+                            ->defaultValue('%kernel.logs_dir%')
                             ->end()
                         ->scalarNode(self::ParameterConsoleBrowser)
                             ->info(
@@ -106,8 +90,8 @@ final class Configuration implements ConfigurationInterface
                             ->prototype('scalar')
                                 ->end()
                             ->defaultValue([
-                                $this->kernelProjectDir . '/bootstrap.php.cache',
-                                $this->kernelCacheDir,
+                                '%kernel.project_dir%/bootstrap.php.cache',
+                                '%kernel.cache_dir%',
                             ])
                             ->end()
                         ->end()

@@ -102,7 +102,7 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
         $collapsePaths = $this->container->getParameter('cdn77.tracy_blue_screen.blue_screen.collapse_paths');
 
         $this->assertArrayContainsStringPart('/bootstrap.php.cache', $collapsePaths);
-        $this->assertArrayContainsStringPart('/tests-cache-dir', $collapsePaths);
+        $this->assertArrayContainsStringPart('%kernel.cache_dir%', $collapsePaths);
     }
 
     public function testSetCollapseDirs(): void
