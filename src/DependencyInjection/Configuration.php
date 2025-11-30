@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace Cdn77\TracyBlueScreenBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Tracy\Logger as TracyLogger;
 
-use function assert;
 use function sprintf;
 
 final class Configuration implements ConfigurationInterface
@@ -46,11 +44,11 @@ final class Configuration implements ConfigurationInterface
         $this->kernelCacheDir = $kernelCacheDir;
     }
 
+    /** @return TreeBuilder<'array'> */
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder($this->alias);
         $rootNode = $treeBuilder->getRootNode();
-        assert($rootNode instanceof ArrayNodeDefinition);
 
         $rootNode
             ->children()
