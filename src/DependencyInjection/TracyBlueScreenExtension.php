@@ -16,11 +16,11 @@ use function is_string;
 //phpcs:disable SlevomatCodingStandard.Files.LineLength.LineTooLong
 final class TracyBlueScreenExtension extends ConfigurableExtension
 {
-    public const ContainerParameterBlueScreenCollapsePaths = 'cdn77.tracy_blue_screen.blue_screen.collapse_paths';
-    public const ContainerParameterConsoleBrowser = 'cdn77.tracy_blue_screen.console.browser';
-    public const ContainerParameterConsoleListenerPriority = 'cdn77.tracy_blue_screen.console.listener_priority';
-    public const ContainerParameterConsoleLogDirectory = 'cdn77.tracy_blue_screen.console.log_directory';
-    public const ContainerParameterControllerListenerPriority = 'cdn77.tracy_blue_screen.controller.listener_priority';
+    public const string ContainerParameterBlueScreenCollapsePaths = 'cdn77.tracy_blue_screen.blue_screen.collapse_paths';
+    public const string ContainerParameterConsoleBrowser = 'cdn77.tracy_blue_screen.console.browser';
+    public const string ContainerParameterConsoleListenerPriority = 'cdn77.tracy_blue_screen.console.listener_priority';
+    public const string ContainerParameterConsoleLogDirectory = 'cdn77.tracy_blue_screen.console.log_directory';
+    public const string ContainerParameterControllerListenerPriority = 'cdn77.tracy_blue_screen.controller.listener_priority';
 
     /** @param mixed[] $mergedConfig */
     public function loadInternal(array $mergedConfig, ContainerBuilder $container): void

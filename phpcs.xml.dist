@@ -5,7 +5,7 @@
 >
     <arg name="cache" value=".phpcs-cache" />
 
-    <config name="php_version" value="80000" />
+    <config name="php_version" value="80300" />
 
     <rule ref="Cdn77">
         <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint" />

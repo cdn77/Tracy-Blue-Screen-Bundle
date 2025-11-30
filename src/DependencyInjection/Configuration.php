@@ -12,17 +12,17 @@ use function sprintf;
 
 final class Configuration implements ConfigurationInterface
 {
-    public const ParameterCollapsePaths = 'collapse_paths';
-    public const ParameterConsoleBrowser = 'browser';
-    public const ParameterConsoleEnabled = 'enabled';
-    public const ParameterConsoleListenerPriority = 'listener_priority';
-    public const ParameterConsoleLogDirectory = 'log_directory';
-    public const ParameterControllerEnabled = 'enabled';
-    public const ParameterControllerListenerPriority = 'listener_priority';
+    public const string ParameterCollapsePaths = 'collapse_paths';
+    public const string ParameterConsoleBrowser = 'browser';
+    public const string ParameterConsoleEnabled = 'enabled';
+    public const string ParameterConsoleListenerPriority = 'listener_priority';
+    public const string ParameterConsoleLogDirectory = 'log_directory';
+    public const string ParameterControllerEnabled = 'enabled';
+    public const string ParameterControllerListenerPriority = 'listener_priority';
 
-    public const SectionBlueScreen = 'blue_screen';
-    public const SectionConsole = 'console';
-    public const SectionController = 'controller';
+    public const string SectionBlueScreen = 'blue_screen';
+    public const string SectionConsole = 'console';
+    public const string SectionController = 'controller';
 
     public function __construct(private readonly string $alias)
     {
