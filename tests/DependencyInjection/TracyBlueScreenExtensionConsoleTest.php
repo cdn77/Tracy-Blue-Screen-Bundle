@@ -15,9 +15,6 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
     {
         parent::setUp();
 
-        $this->setParameter('kernel.project_dir', __DIR__);
-        $this->setParameter('kernel.logs_dir', __DIR__ . '/tests-logs-dir');
-        $this->setParameter('kernel.cache_dir', __DIR__ . '/tests-cache-dir');
         $this->setParameter('kernel.environment', 'dev');
         $this->setParameter('kernel.debug', true);
     }
@@ -85,7 +82,7 @@ final class TracyBlueScreenExtensionConsoleTest extends AbstractExtensionTestCas
 
         $this->assertContainerBuilderHasParameter(
             TracyBlueScreenExtension::ContainerParameterConsoleLogDirectory,
-            __DIR__ . '/tests-logs-dir',
+            '%kernel.logs_dir%',
         );
     }
 

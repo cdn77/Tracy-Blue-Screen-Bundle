@@ -15,9 +15,6 @@ final class TracyBlueScreenExtensionControllerTest extends AbstractExtensionTest
     {
         parent::setUp();
 
-        $this->setParameter('kernel.project_dir', __DIR__);
-        $this->setParameter('kernel.logs_dir', __DIR__);
-        $this->setParameter('kernel.cache_dir', __DIR__ . '/tests-cache-dir');
         $this->setParameter('kernel.environment', 'dev');
         $this->setParameter('kernel.debug', true);
     }
