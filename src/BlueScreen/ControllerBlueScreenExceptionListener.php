@@ -15,12 +15,8 @@ use function ob_start;
 
 final class ControllerBlueScreenExceptionListener
 {
-    /** @var BlueScreen */
-    private $blueScreen;
-
-    public function __construct(BlueScreen $blueScreen)
+    public function __construct(private BlueScreen $blueScreen)
     {
-        $this->blueScreen = $blueScreen;
     }
 
     public function onKernelException(ExceptionEvent $event): void

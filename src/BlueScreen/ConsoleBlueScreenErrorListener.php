@@ -20,28 +20,12 @@ use function sprintf;
 
 final class ConsoleBlueScreenErrorListener
 {
-    /** @var TracyLogger */
-    private $tracyLogger;
-
-    /** @var BlueScreen */
-    private $blueScreen;
-
-    /** @var string|null */
-    private $logDirectory;
-
-    /** @var string|null */
-    private $browser;
-
     public function __construct(
-        TracyLogger $tracyLogger,
-        BlueScreen $blueScreen,
-        string|null $logDirectory,
-        string|null $browser,
+        private TracyLogger $tracyLogger,
+        private BlueScreen $blueScreen,
+        private string|null $logDirectory = null,
+        private string|null $browser = null,
     ) {
-        $this->tracyLogger = $tracyLogger;
-        $this->blueScreen = $blueScreen;
-        $this->logDirectory = $logDirectory;
-        $this->browser = $browser;
     }
 
     public function onConsoleError(ConsoleErrorEvent $event): void
