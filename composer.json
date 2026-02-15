@@ -4,7 +4,7 @@
 	"keywords": ["tracy", "bluescreen", "error", "debug", "debugger", "exceptions", "bundle"],
 	"license": "MIT",
 	"require": {
-		"php": "^8.3",
+		"php": "^8.4",
 		"symfony/config": "^7.4 || ^8",
 		"symfony/console": "^7.4 || ^8",
 		"symfony/dependency-injection": "^7.4 || ^8",
