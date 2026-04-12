@@ -10,7 +10,7 @@
 		"symfony/dependency-injection": "^7.4 || ^8",
 		"symfony/http-kernel": "^7.4 || ^8",
 		"symfony/yaml": "^7.4 || ^8",
-		"tracy/tracy": "^2.8"
+		"tracy/tracy": "^2.11"
 	},
 	"require-dev": {
 		"cdn77/coding-standard": "^7.0",
