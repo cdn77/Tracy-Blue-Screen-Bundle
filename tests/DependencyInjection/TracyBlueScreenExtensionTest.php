@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cdn77\TracyBlueScreenBundle\Tests\DependencyInjection;
 
+use Cdn77\TracyBlueScreenBundle\BlueScreen\TracyScrubber;
 use Cdn77\TracyBlueScreenBundle\DependencyInjection\TracyBlueScreenExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -141,6 +142,41 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
         $collapsePaths = $this->container->getParameter('cdn77.tracy_blue_screen.blue_screen.collapse_paths');
 
         self::assertEmpty($collapsePaths);
+    }
+
+    public function testScrubberIsNullByDefault(): void
+    {
+        $this->loadExtensions();
+
+        $blueScreen = $this->container->get('cdn77.tracy_blue_screen.tracy.blue_screen.default');
+        assert($blueScreen instanceof BlueScreen);
+
+        self::assertNull($blueScreen->scrubber);
+    }
+
+    public function testSetScrubber(): void
+    {
+        $scrubber = new class implements TracyScrubber {
+            public function __invoke(string $key, mixed $value, string|null $class): bool
+            {
+                return $key === 'secret';
+            }
+        };
+
+        $this->container->set('my_scrubber', $scrubber);
+
+        $this->loadExtensions(
+            [
+                'tracy_blue_screen' => [
+                    'blue_screen' => ['scrubber' => 'my_scrubber'],
+                ],
+            ],
+        );
+
+        $blueScreen = $this->container->get('cdn77.tracy_blue_screen.tracy.blue_screen.default');
+        assert($blueScreen instanceof BlueScreen);
+
+        self::assertSame($scrubber, $blueScreen->scrubber);
     }
 
     /** @return ExtensionInterface[] */

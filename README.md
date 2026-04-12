@@ -84,6 +84,26 @@ tracy_blue_screen:
             - '%kernel.cache_dir%'
             # plus paths set in BlueScreen instance used (/vendor)
 
+        # Service ID of a callable(string $key, mixed $value, ?string $class): bool
+        # that returns true for sensitive data to hide (passwords, tokens, API keys, etc.)
+        scrubber: ~
+
+```
+
+Example scrubber implementation:
+
+```php
+namespace App\Tracy;
+
+use Cdn77\TracyBlueScreenBundle\BlueScreen\TracyScrubber;
+
+final class SensitiveDataScrubber implements TracyScrubber
+{
+    public function __invoke(string $key, mixed $value, string|null $class): bool
+    {
+        return preg_match('/(PASSWORD|SECRET|TOKEN|API_KEY|DSN)$/i', $key) === 1;
+    }
+}
 ```
 
 You can also override services used internally, for example if you need to specify options for the BlueScreen instance, you can provide custom instance with an [alias](http://symfony.com/doc/current/components/dependency_injection/advanced.html#aliasing):

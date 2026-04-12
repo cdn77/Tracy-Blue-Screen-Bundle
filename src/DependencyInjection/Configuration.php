@@ -19,6 +19,7 @@ final class Configuration implements ConfigurationInterface
     public const string ParameterConsoleLogDirectory = 'log_directory';
     public const string ParameterControllerEnabled = 'enabled';
     public const string ParameterControllerListenerPriority = 'listener_priority';
+    public const string ParameterScrubber = 'scrubber';
 
     public const string SectionBlueScreen = 'blue_screen';
     public const string SectionConsole = 'console';
@@ -93,6 +94,12 @@ final class Configuration implements ConfigurationInterface
                                 '%kernel.project_dir%/bootstrap.php.cache',
                                 '%kernel.cache_dir%',
                             ])
+                            ->end()
+                        ->stringNode(self::ParameterScrubber)
+                            //phpcs:ignore SlevomatCodingStandard.Files.LineLength.LineTooLong
+                            ->info('Service ID of a callable(string $key, mixed $value, ?string $class): bool that returns true for sensitive data to hide.')
+                            ->cannotBeEmpty()
+                            ->defaultNull()
                             ->end()
                         ->end()
                     ->end()
