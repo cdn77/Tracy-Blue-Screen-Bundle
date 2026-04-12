@@ -11,6 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Tracy\BlueScreen;
+use Tracy\Debugger;
 
 use function array_key_exists;
 use function assert;
@@ -73,6 +74,9 @@ final class TracyBlueScreenExtensionTest extends AbstractExtensionTestCase
         $this->setParameter('kernel.cache_dir', __DIR__ . '/tests-cache-dir');
         $this->setParameter('kernel.environment', 'dev');
         $this->setParameter('kernel.debug', true);
+
+        // Reset the static BlueScreen's scrubber to ensure test isolation
+        Debugger::getBlueScreen()->scrubber = null;
     }
 
     public function testOnlyAddCollapsePaths(): void
