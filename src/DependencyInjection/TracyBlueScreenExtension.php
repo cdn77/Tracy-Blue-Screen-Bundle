@@ -7,6 +7,7 @@ namespace Cdn77\TracyBlueScreenBundle\DependencyInjection;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
 
 use function assert;
@@ -72,6 +73,12 @@ final class TracyBlueScreenExtension extends ConfigurableExtension
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/config'));
         $loader->load('services.yml');
+
+        $scrubberServiceId = $blueScreenConfig[Configuration::ParameterScrubber];
+        if ($scrubberServiceId !== null) {
+            $container->getDefinition('cdn77.tracy_blue_screen.tracy.blue_screen.default')
+                ->setArgument('$scrubber', new Reference($scrubberServiceId));
+        }
 
         $environment = $container->getParameter('kernel.environment');
         assert(is_string($environment));
